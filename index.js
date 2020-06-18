@@ -7,10 +7,15 @@ const PORT = process.env.PORT || 5000;
 //middleware
 server.use(cors());
 server.use(express.json()); //req.body
+
 if (process.env.NODE_ENV === "production") {
   //server static content
   //npm run build
   server.use(express.static(path.join(__dirname, "client/build")));
+  console.log("Production");
+}else{
+  server.use(express.static("./client/build"));
+  console.log("Local");
 }
 console.log(__dirname);
 console.log(path.join(__dirname, "client/build"));
@@ -18,14 +23,12 @@ console.log(path.join(__dirname, "client/build"));
 //create a gato
 server.post("/gatos", async (req, res) => {
   try {
-
     const { name } = req.body.catname;
     const { age } = req.body.catage;
     const newTodo = await pool.query(
       "INSERT INTO gatos (cat_name,cat_age) VALUES($1,$2) RETURNING *",
       [name,age]
     );
-
     res.json(newTodo.rows[0]);
   } catch (err) {
     console.error(err.message);
