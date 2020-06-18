@@ -4,24 +4,18 @@ const cors = require("cors");
 const pool = require("./Connection");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
-
 //middleware
 server.use(cors());
 server.use(express.json()); //req.body
-
 if (process.env.NODE_ENV === "production") {
   //server static content
   //npm run build
   server.use(express.static(path.join(__dirname, "client/build")));
 }
-
 console.log(__dirname);
 console.log(path.join(__dirname, "client/build"));
-
-
-
 //ROUTES//
-//create a todo
+//create a gato
 server.post("/gatos", async (req, res) => {
   try {
 
@@ -37,19 +31,7 @@ server.post("/gatos", async (req, res) => {
     console.error(err.message);
   }
 });
-//create table gatos
-server.post("/create", async (req, res) => {
-  try {
-    const newTodo = await pool.query(
-      "CREATE TABLE gatos (cat_id INT GENERATED ALWAYS AS IDENTITY,cat_name VARCHAR  NULL,cat_age VARCHAR NULL)");
-
-    res.json(newTodo.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
-//get all todos
-
+//get all gatos
 server.get("/gatos", async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM gatos");
@@ -59,9 +41,7 @@ server.get("/gatos", async (req, res) => {
     console.error(err.message);
   }
 });
-
-//get a todo
-
+//get a gato
 server.get("/gatos/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -74,9 +54,7 @@ server.get("/gatos/:id", async (req, res) => {
     console.error(err.message);
   }
 });
-
-//update a todo
-
+//update a gato
 server.put("/gatos/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -94,9 +72,7 @@ server.put("/gatos/:id", async (req, res) => {
     console.error(err.message);
   }
 });
-
-//delete a todo
-
+//delete a gato
 server.delete("/gatos/:id", async (req, res) => {
   try {
     console.log('entrando');
@@ -109,7 +85,6 @@ server.delete("/gatos/:id", async (req, res) => {
     console.log(err.message);
   }
 });
-
 server.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
