@@ -9,7 +9,7 @@ const ShowNDelete = () => {
 
   const deleteTodo = async id => {
     try {
-      const deleteTodo = await fetch(`/gatos/${id}`, {
+      const deleteTodo = await fetch(`https://veterinariareact.herokuapp.com/gatos/${id}`, {
         method: "DELETE"
       });
 
@@ -21,7 +21,7 @@ const ShowNDelete = () => {
 
   const getTodos = async () => {
     try {
-      const response = await fetch("/gatos");
+      const response = await fetch("https://veterinariareact.herokuapp.com/gatos");
       const jsonData = await response.json();
 
       setTodos(jsonData);

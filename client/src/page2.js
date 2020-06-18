@@ -3,12 +3,13 @@ import SnD from './Show&Delete';
 const Page2 = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
       const catname = {name};
       const catage = {age};
-      const response = await fetch("/gatos", {
+      const response = await fetch("https://veterinariareact.herokuapp.com/gatos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({catname,catage})
