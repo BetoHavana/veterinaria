@@ -9,7 +9,7 @@ const Page2 = () => {
     try {
       const catname = {name};
       const catage = {age};
-      const response = await fetch("https://veterinariareact.herokuapp.com/gatos", {
+      const response = await fetch("/gatos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({catname,catage})

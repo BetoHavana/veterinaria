@@ -8,7 +8,7 @@ const Edit = ({ todo }) => {
     try {
       const cat_name = { name };
       const cat_age = { age };
-      const response = await fetch(`https://veterinariareact.herokuapp.com/gatos/${todo.cat_id}`,
+      const response = await fetch(`/gatos/${todo.cat_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -23,6 +23,8 @@ const Edit = ({ todo }) => {
 
   return (
     <Fragment>
+       
+        
       <button
         type = "button"
         className = "btn btn-warning"
