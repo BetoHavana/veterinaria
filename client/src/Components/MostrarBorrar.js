@@ -1,37 +1,37 @@
 import React, { Fragment, useEffect, useState } from "react";
 
-import EditTodo from "./edit";
+import EditarMascota from "./EditarMascota";
 
-const ShowNDelete = () => {
-  const [todos, setTodos] = useState([]);
+const MostrarBorrar = () => {
+  const [mascotas, setMascotas] = useState([]);
 
   //delete todo function
 
-  const deleteTodo = async id => {
+  const borrarMascota = async id => {
     try {
-      const deleteTodo = await fetch(`/gatos/${id}`, {
+      const deleteMascota = await fetch(`/gatos/${id}`, {
         method: "DELETE"
       });
 
-      setTodos(todos.filter(todo => todo.cat_id !== id));
+      setMascotas(mascotas.filter(mascotas => mascotas.cat_id !== id));
     } catch (err) {
       console.error(err.message);
     }
   };
 
-  const getTodos = async () => {
+  const getMascotas = async () => {
     try {
       const response = await fetch("/gatos");
       const jsonData = await response.json();
 
-      setTodos(jsonData);
+      setMascotas(jsonData);
     } catch (err) {
       console.error(err.message);
     }
   };
 
   useEffect(() => {
-    getTodos();
+    getMascotas();
   }, []);
 
   return (
@@ -39,26 +39,26 @@ const ShowNDelete = () => {
       <table className="table mt-5 text-center">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Editar</th>
+            <th>Borrar</th>
           </tr>
         </thead>
         <tbody>
-          {todos.map(todo => (
-            <tr key={todo.cat_id}>
-              <td>{todo.cat_name}</td>
-              <td>{todo.cat_age}</td>
+          {mascotas.map(mascotas => (
+            <tr key={mascotas.cat_id}>
+              <td>{mascotas.cat_name}</td>
+              <td>{mascotas.cat_age}</td>
               <td>
-                <EditTodo todo={todo} />
+                <EditarMascota mascotas={mascotas} />
               </td>
               <td>
                 <button
                   className="btn btn-danger"
-                  onClick={() => deleteTodo(todo.cat_id)}
+                  onClick={() => borrarMascota(mascotas.cat_id)}
                 >
-                  Delete
+                  Borrar
                 </button>
               </td>
             </tr>
@@ -69,4 +69,4 @@ const ShowNDelete = () => {
   );
 };
 
-export default ShowNDelete;
+export default MostrarBorrar;

@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
-import SnD from './Show&Delete';
-const Page2 = () => {
+import MostrarBorrar from './MostrarBorrar';
+const Mascotas = () => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   
@@ -22,7 +22,7 @@ const Page2 = () => {
   };
   return (
     <Fragment>
-      <h1 className="text-center mt-5">Registro de Gatos</h1>
+      <h1 className="text-center mt-5">Registro de Mascotas</h1>
       <form onSubmit={onSubmitForm}>
           <div className="form-group">
             <label htmlFor="exampleFormControlInput1">Nombre </label>
@@ -48,9 +48,9 @@ const Page2 = () => {
           </div>
           <button className="btn btn-success"> Insertar</button>
         </form>
-      <h1 className="text-center mt-5">Gatos Registrados</h1>
-      <SnD/>
+      <h1 className="text-center mt-5">Mascotas Registrados</h1>
+      <MostrarBorrar/>
     </Fragment>
   );
 };
-export default Page2;
+export default Mascotas;
