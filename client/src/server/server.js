@@ -2,37 +2,43 @@ const express = require("express");
 const server = express();
 const cors = require("cors");
 const pool = require("./Connection");
-const path = require("path");
-const PORT = process.env.PORT || 5000;
+
 //middleware
 server.use(cors());
 server.use(express.json()); //req.body
 
-if (process.env.NODE_ENV === "production") {
-  //server static content
-  //npm run build
-  server.use(express.static(path.join(__dirname, "client/build")));
-  console.log("Production");
-}else{
-  server.use(express.static("./client/build"));
-  console.log("Local");
-}
 //ROUTES//
-//create a gato
+
+//create a todo
+
 server.post("/gatos", async (req, res) => {
   try {
+
     const { name } = req.body.catname;
     const { age } = req.body.catage;
     const newTodo = await pool.query(
       "INSERT INTO gatos (cat_name,cat_age) VALUES($1,$2) RETURNING *",
       [name,age]
     );
+
     res.json(newTodo.rows[0]);
   } catch (err) {
     console.error(err.message);
   }
 });
-//get all gatos
+//create table gatos
+server.post("/create", async (req, res) => {
+  try {
+    const newTodo = await pool.query(
+      "CREATE TABLE gatos (cat_id INT GENERATED ALWAYS AS IDENTITY,cat_name VARCHAR  NULL,cat_age VARCHAR NULL)");
+
+    res.json(newTodo.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+//get all todos
+
 server.get("/gatos", async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM gatos");
@@ -42,7 +48,9 @@ server.get("/gatos", async (req, res) => {
     console.error(err.message);
   }
 });
-//get a gato
+
+//get a todo
+
 server.get("/gatos/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -55,7 +63,9 @@ server.get("/gatos/:id", async (req, res) => {
     console.error(err.message);
   }
 });
-//update a gato
+
+//update a todo
+
 server.put("/gatos/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -73,7 +83,9 @@ server.put("/gatos/:id", async (req, res) => {
     console.error(err.message);
   }
 });
-//delete a gato
+
+//delete a todo
+
 server.delete("/gatos/:id", async (req, res) => {
   try {
     console.log('entrando');
@@ -86,9 +98,7 @@ server.delete("/gatos/:id", async (req, res) => {
     console.log(err.message);
   }
 });
-server.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build/index.html"));
-});
-server.listen(PORT, () => {
-  console.log(`Server is starting on port ${PORT}`);
+
+server.listen(5000, () => {
+  console.log("server has started on port 5000");
 });
