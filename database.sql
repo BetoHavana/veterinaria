@@ -8,6 +8,7 @@
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 */
+
     CREATE TABLE Clientes(
     IdCliente VARCHAR PRIMARY KEY,
     NombreCliente VARCHAR NULL,
@@ -29,6 +30,4 @@
     Edad NUMERIC NULL,
     Propietario VARCHAR REFERENCES Clientes(IdCliente)
 );
-
-INSERT INTO gatos(cat_name, cat_age) VALUES('Gato 1', '12');
 	
