@@ -9,11 +9,11 @@ const MostrarBorrar = () => {
 
   const borrarMascota = async id => {
     try {
-      const deleteMascota = await fetch(`/gatos/${id}`, {
+      const deleteMascota = await fetch(`/mascotas/${id}`, {
         method: "DELETE"
       });
 
-      setMascotas(mascotas.filter(mascotas => mascotas.cat_id !== id));
+      setMascotas(mascotas.filter(mascotas => mascotas.idmascota !== id));
     } catch (err) {
       console.error(err.message);
     }
@@ -21,7 +21,7 @@ const MostrarBorrar = () => {
 
   const getMascotas = async () => {
     try {
-      const response = await fetch("/gatos");
+      const response = await fetch("/mascotas");
       const jsonData = await response.json();
 
       setMascotas(jsonData);
@@ -47,16 +47,16 @@ const MostrarBorrar = () => {
         </thead>
         <tbody>
           {mascotas.map(mascotas => (
-            <tr key={mascotas.cat_id}>
-              <td>{mascotas.cat_name}</td>
-              <td>{mascotas.cat_age}</td>
+            <tr key={mascotas.idmascota}>
+              <td>{mascotas.nombremascota}</td>
+              <td>{mascotas.edad}</td>
               <td>
                 <EditarMascota mascotas={mascotas} />
               </td>
               <td>
                 <button
                   className="btn btn-danger"
-                  onClick={() => borrarMascota(mascotas.cat_id)}
+                  onClick={() => borrarMascota(mascotas.idmascota)}
                 >
                   Borrar
                 </button>

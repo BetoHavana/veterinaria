@@ -1,18 +1,25 @@
 import React, { Fragment, useState } from "react";
 const EditarMascota = ({ mascotas }) => {
-  const [name, setName] = useState(mascotas.cat_name);
-  const [age, setAge] = useState(mascotas.cat_age);
+  const [nombre, setNombre] = useState(mascotas.nombremascota);
+  const [edad, setEdad] = useState(mascotas.edadmascota);
+  const [sexo, setSexo] = useState("");
+  const [color, setColor] = useState("");
+  const [especie, setEspecie] = useState("");
+  const [raza, setRaza] = useState("");
+  const [numcartillam, setCartilla] = useState("");
+  const [fechanacimientom, setFecha] = useState("");
+  const [propietariom, setPropietario] = useState("");
   //edit description function
   const updateName = async (e) => {
     e.preventDefault();
     try {
-      const cat_name = { name };
-      const cat_age = { age };
-      const response = await fetch(`/gatos/${mascotas.cat_id}`,
+      const nombrem = { nombre };
+      const edadm = { edad };
+      const response = await fetch(`/mascotas/${mascotas.idmascota}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({cat_name,cat_age})
+          body: JSON.stringify({nombrem,edadm})
         }
       );
       window.location = "/path2";
@@ -27,9 +34,9 @@ const EditarMascota = ({ mascotas }) => {
         type = "button"
         className = "btn btn-warning"
         data-toggle = "modal"
-        data-target = {`#id${mascotas.cat_id}`}> Editar </button>
+        data-target = {`#id${mascotas.mascotaid}`}> Editar </button>
 
-      <div className="modal" id={`id${mascotas.cat_id}`} onClick={() => setName(mascotas.cat_name)}>
+      <div className="modal" id={`id${mascotas.mascotaid}`} onClick={() => setNombre(mascotas.nombremascota)}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -38,7 +45,7 @@ const EditarMascota = ({ mascotas }) => {
                 type="button"
                 className="close"
                 data-dismiss="modal"
-                onClick={() => setName(mascotas.cat_name)}>
+                onClick={() => setNombre(mascotas.nombremascota)}>
                 &times;
               </button>
             </div>
@@ -46,15 +53,15 @@ const EditarMascota = ({ mascotas }) => {
               <input
                 type="text"
                 className="form-control"
-                value={name}
-                onChange={e => setName(e.target.value)}/>
+                value={nombre}
+                onChange={e => setNombre(e.target.value)}/>
             </div>
             <div className="modal-body">
               <input
                 type="text"
                 className="form-control"
-                value={age}
-                onChange={e => setAge(e.target.value)}/>
+                value={edad}
+                onChange={e => setEdad(e.target.value)}/>
             </div>
             <div className="modal-footer">
               <button
@@ -68,7 +75,7 @@ const EditarMascota = ({ mascotas }) => {
                 type="button"
                 className="btn btn-danger"
                 data-dismiss="modal"
-                onClick={() => setName(mascotas.cat_name)}>
+                onClick={() => setNombre(mascotas.nombremascota)}>
                 Cerrar
               </button>
             </div>

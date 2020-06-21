@@ -1,19 +1,44 @@
 import React, { Fragment, useState } from "react";
 import MostrarBorrar from './MostrarBorrar';
 const Mascotas = () => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  
+  const [nombre, setNombre] = useState("");
+  const [edad,setEdad] = useState("");
+  const [sexo, setSexo] = useState("");
+  const [color, setColor] = useState("");
+  const [especie, setEspecie] = useState("");
+  const [raza, setRaza] = useState("");
+  const [numcartilla, setCartilla] = useState("");
+  const [fechanacimiento, setFecha] = useState("");
+  const [propietario, setPropietario] = useState("");
+  const [id,setId] = useState("");
+
+  function UUID(){
+    var dt = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (dt + Math.random()*16)%16 | 0;
+        dt = Math.floor(dt/16);
+        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+    });
+    return uuid;
+}
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const catname = {name};
-      const catage = {age};
-      const response = await fetch("/gatos", {
+      setId(UUID().replace(/[-]/g,""));
+      const nombrem = {nombre};
+      const edadm = {edad};
+      const idm =  {id};
+      const sexom = { sexo };
+      const colorm = { color };
+      const especiem = { especie };
+      const razam = { raza };
+      const numcartillam = { numcartilla};
+      const fechanacimientom = { fechanacimiento};
+      const propietariom = { propietario};
+      const response = await fetch("/mascotas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({catname,catage})
-        
+        body: JSON.stringify({nombrem,edadm,idm,sexom,colorm ,especiem, razam,numcartillam,fechanacimientom,propietariom})
       });
       window.location = "/path2";
     } catch (err) {
@@ -30,9 +55,9 @@ const Mascotas = () => {
               type="text"
               className="form-control"
               id="exampleFormControlInput1"
-              placeholder="Michi"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              placeholder="Name"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
             />
           </div>
           <div className="form-group">
@@ -42,8 +67,85 @@ const Mascotas = () => {
               className="form-control"
               id="exampleFormControlInput1"
               placeholder="1"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
+              value={edad}
+              onChange={(e) => setEdad(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleFormControlInput1">Color </label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleFormControlInput1">Sexo </label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              value={sexo}
+              onChange={(e) => setSexo(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleFormControlInput1">Especie </label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              value={especie}
+              onChange={(e) => setEspecie(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleFormControlInput1">Raza </label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              value={raza}
+              onChange={(e) => setRaza(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleFormControlInput1">Numero cartilla </label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              value={numcartilla}
+              onChange={(e) => setCartilla(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleFormControlInput1"> Fecha Nacimiento </label>
+            <input
+              type="date"
+              className="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              value={fechanacimiento}
+              onChange={(e) => setFecha(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleFormControlInput1"> Propietario </label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleFormControlInput1"
+              placeholder=""
+              value={propietario}
+              onChange={(e) => setPropietario(e.target.value)}
             />
           </div>
           <button className="btn btn-success"> Insertar</button>

@@ -1,6 +1,3 @@
--- Database: Veterinaria
-
--- DROP DATABASE "Veterinaria";
 
 /*CREATE DATABASE "Veterinaria"
     WITH 
@@ -10,11 +7,27 @@
     LC_CTYPE = 'Spanish_Mexico.1252'
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
-	*/
-	CREATE TABLE gatos (
-    cat_id INT GENERATED ALWAYS AS IDENTITY,
-    cat_name VARCHAR  NULL,
-	cat_age VARCHAR NULL
+*/
+    CREATE TABLE Clientes(
+    IdCliente VARCHAR PRIMARY KEY,
+    NombreCliente VARCHAR NULL,
+    Direccion VARCHAR NULL,
+    Telefono VARCHAR NULL,
+    Celular VARCHAR NULL,
+    Correo VARCHAR NULL,
+    );
+
+	CREATE TABLE Mascotas (
+    IdMascota VARCHAR PRIMARY KEY,
+    NombreMascota VARCHAR  NULL,
+    Sexo VARCHAR NULL,
+    Color VARCHAR NULL,
+    Especie VARCHAR NULL,
+    Raza VARCHAR NULL,
+    NumCartilla NUMERIC NULL,
+    FechaNacimiento DATE NULL,
+    Edad NUMERIC NULL,
+    Propietario VARCHAR REFERENCES Clientes(IdCliente)
 );
 
 INSERT INTO gatos(cat_name, cat_age) VALUES('Gato 1', '12');
