@@ -13,18 +13,14 @@ const Mascotas = () => {
   const [id,setId] = useState("");
 
   function UUID(){
-    var dt = new Date().getTime();
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = (dt + Math.random()*16)%16 | 0;
-        dt = Math.floor(dt/16);
-        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
-    });
+    var uuid = Math.round(Math.random()*999999);
+    console.log("Clave: "+uuid);
     return uuid;
 }
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      setId(UUID().replace(/[-]/g,""));
+      setId(UUID());
       const nombrem = {nombre};
       const edadm = {edad};
       const idm =  {id};
@@ -84,25 +80,26 @@ const Mascotas = () => {
           </div>
           <div className="form-group">
             <label htmlFor="exampleFormControlInput1">Sexo </label>
-            <input
-              type="text"
-              className="form-control"
-              id="exampleFormControlInput1"
-              placeholder=""
+            <select placeholder=""
               value={sexo}
               onChange={(e) => setSexo(e.target.value)}
-            />
+              className="form-control" id="exampleFormControlSelect1">
+              <option>Macho</option>
+              <option>Hembra</option>
+              <option></option>
+            </select>
+            
           </div>
           <div className="form-group">
             <label htmlFor="exampleFormControlInput1">Especie </label>
-            <input
-              type="text"
-              className="form-control"
-              id="exampleFormControlInput1"
-              placeholder=""
-              value={especie}
-              onChange={(e) => setEspecie(e.target.value)}
-            />
+            <select placeholder=""
+               value={especie}
+               onChange={(e) => setEspecie(e.target.value)}
+              className="form-control" id="exampleFormControlSelect1">
+              <option>Canino</option>
+              <option>Felino</option>
+              <option></option>
+            </select>
           </div>
           <div className="form-group">
             <label htmlFor="exampleFormControlInput1">Raza </label>
