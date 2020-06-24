@@ -52,9 +52,7 @@ server.get("/mascotas", async (req, res) => {
     console.error(err.message);
   }
 });
-
 //get a todo
-
 server.get("/mascotas/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -65,9 +63,7 @@ server.get("/mascotas/:id", async (req, res) => {
     console.error(err.message);
   }
 });
-
 //update a todo
-
 server.put("/mascotas/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -77,9 +73,9 @@ server.put("/mascotas/:id", async (req, res) => {
     const { color } = req.body.colorm;
     const { especie } = req.body.especiem;
     const { raza } = req.body.razam;
-    const { numcartilla } = req.body.numcartilla;
-    const { fechanacimiento } = req.body.fechanacimiento;
-    const { propietario } = req.body.propietario;
+    const { numcartilla } = req.body.numcartillam;
+    const { fechanacimiento } = req.body.fechanacimientom;
+    const { propietario } = req.body.propietariom;
     const update = await pool.query(
       "UPDATE mascotas SET nombremascota = $1,sexo = $2,color = $3,especie = $4 ,raza = $5,numcartilla = $6,fechanacimiento = $7,edad = $8,propietario = $9 WHERE idmascota = $10",
       [nombre,sexo,color,especie,raza,numcartilla,fechanacimiento,edad,propietario,id]
@@ -89,7 +85,6 @@ server.put("/mascotas/:id", async (req, res) => {
     console.error(err.message);
   }
 });
-
 //delete
 server.delete("/mascotas/:id", async (req, res) => {
   try {
@@ -127,9 +122,7 @@ server.get("/clientes", async (req, res) => {
     console.error(err.message);
   }
 });
-
 //get a todo
-
 server.get("/clientes/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -140,17 +133,16 @@ server.get("/clientes/:id", async (req, res) => {
     console.error(err.message);
   }
 });
-
 //update a todo
-
 server.put("/clientes/:id", async (req, res) => {
+  console.log('update in');
   try {
     const { id } = req.params;
     const { nombre } = req.body.nombrec;
-    const { direccion } = req.body.direccion;
-    const { telefono } = req.body.telefono;
-    const { celular } = req.body.celular;
-    const { correo } = req.body.correo;
+    const { direccion } = req.body.direccionc;
+    const { telefono } = req.body.telefonoc;
+    const { celular } = req.body.celularc;
+    const { correo } = req.body.correoc;
     const update = await pool.query(
       "UPDATE clientes SET nombrecliente = $1,direccion = $2,telefono = $3,celular = $4,correo = $5 WHERE idcliente = $6",
       [nombre,direccion,telefono,celular,correo,id]
@@ -159,8 +151,8 @@ server.put("/clientes/:id", async (req, res) => {
   } catch (err) {
     console.error(err.message);
   }
+  console.log('update out');
 });
-
 //delete
 server.delete("/clientes/:id", async (req, res) => {
   try {
