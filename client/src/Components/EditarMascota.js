@@ -1,25 +1,33 @@
 import React, { Fragment, useState } from "react";
 const EditarMascota = ({ mascotas }) => {
   const [nombre, setNombre] = useState(mascotas.nombremascota);
-  const [edad, setEdad] = useState(mascotas.edadmascota);
-  const [sexo, setSexo] = useState("");
-  const [color, setColor] = useState("");
-  const [especie, setEspecie] = useState("");
-  const [raza, setRaza] = useState("");
-  const [numcartillam, setCartilla] = useState("");
-  const [fechanacimientom, setFecha] = useState("");
-  const [propietariom, setPropietario] = useState("");
+  const [edad, setEdad] = useState(mascotas.edad);
+  const [sexo, setSexo] = useState(mascotas.sexo);
+  const [color, setColor] = useState(mascotas.color);
+  const [especie, setEspecie] = useState(mascotas.especie);
+  const [raza, setRaza] = useState(mascotas.raza);
+  const [numcartilla, setCartilla] = useState(mascotas.numcartilla);
+  const [fechanacimiento, setFecha] = useState(mascotas.fechanacimiento);
+  const [propietario, setPropietario] = useState(mascotas.propietario);
   //edit description function
   const updateName = async (e) => {
     e.preventDefault();
     try {
       const nombrem = { nombre };
       const edadm = { edad };
+      const sexom = { sexo };
+      const colorm = { color };
+      const especiem = { especie };
+      const razam = { raza };
+      const numcartillam = { numcartilla };
+      const fechanacimientom = { fechanacimiento };
+      const propietariom = { propietario };
+
       const response = await fetch(`/mascotas/${mascotas.idmascota}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({nombrem,edadm})
+          body: JSON.stringify({nombrem,edadm,sexom,colorm,especiem,razam,numcartillam,propietariom,fechanacimientom})
         }
       );
       window.location = "/path2";
@@ -34,9 +42,9 @@ const EditarMascota = ({ mascotas }) => {
         type = "button"
         className = "btn btn-warning"
         data-toggle = "modal"
-        data-target = {`#id${mascotas.mascotaid}`}> Editar </button>
+        data-target = {`#id${mascotas.idmascota}`}> Editar </button>
 
-      <div className="modal" id={`id${mascotas.mascotaid}`} onClick={() => setNombre(mascotas.nombremascota)}>
+      <div className="modal" id={`id${mascotas.idmascota}`} onClick={() => setNombre(mascotas.nombremascota)}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">

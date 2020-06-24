@@ -1,16 +1,16 @@
 import React, { Fragment, useState } from "react";
 const EditarMascota = ({ clientes }) => {
   const [nombre, setNombre] = useState(clientes.nombrecliente);
-  const [direccion, setDir] = useState('');
-  const [telefono, setTel] = useState('');
-  const [celular, setCel] = useState('');
+  const [direccion, setDir] = useState(clientes.direccion);
+  const [telefono, setTel] = useState(clientes.telefono);
+  const [celular, setCel] = useState(clientes.celular);
   const [correo, setCorreo] = useState(clientes.correo);
   //edit description function
   const updateName = async (e) => {
     e.preventDefault();
     try {
       const nombrec = { nombre };
-      const correoc = { correo };
+      const correoc = { correo }; 
       const direccionc = { direccion };
       const telefonoc = { telefono };
       const celularc = { celular };

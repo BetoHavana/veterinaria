@@ -1,28 +1,15 @@
 import React, { Fragment, useState } from "react";
 import MostrarBorrarClientes from './MostrarBorrarClientes';
 const Clientes = () => {
-    const [id, setId] = useState("");
+    const [id, setId] = useState(Math.round(Math.random()*999999).toString());
     const [nombre, setNombre] = useState("");
     const [direccion, setDir] = useState("");
     const [telefono, setTel] = useState("");
     const [celular, setCel] = useState("");
     const [correo, setCorreo] = useState("");
-    function UUID(){
-        /*
-        var dt = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = (dt + Math.random()*16)%16 | 0;
-            dt = Math.floor(dt/16);
-            return (c=='x' ? r :(r&0x3|0x8)).toString(16);
-        });*/
-        var uuid = Math.round(Math.random()*999999);
-        console.log("Clave: "+uuid);
-        return uuid;
-    }
     const onSubmitForm = async (e) => {
       e.preventDefault();
       try {
-          setId(UUID());
         const idc = {id};
         const nombrec = {nombre};
         const direccionc = {direccion};
@@ -36,7 +23,7 @@ const Clientes = () => {
         });
         window.location = "/path3";
       } catch (err) {
-        console.error(err.message);
+        console.error('error:' + err.message);
       }
     };
     return (

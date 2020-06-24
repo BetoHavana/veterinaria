@@ -10,17 +10,11 @@ const Mascotas = () => {
   const [numcartilla, setCartilla] = useState("");
   const [fechanacimiento, setFecha] = useState("");
   const [propietario, setPropietario] = useState("");
-  const [id,setId] = useState("");
-
-  function UUID(){
-    var uuid = Math.round(Math.random()*999999);
-    console.log("Clave: "+uuid);
-    return uuid;
-}
+  const [id,setId] = useState(Math.round(Math.random()*999999).toString());
+  
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      setId(UUID());
       const nombrem = {nombre};
       const edadm = {edad};
       const idm =  {id};

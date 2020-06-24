@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
             <nav className="navbar">
             <ul className="navbar-nav">
               <li className="logo">
-                <a href="#" className="nav-link">
+                <p className="nav-link">
                   <span className="link-text logo-text">Veterinaria</span>
                   <svg
                     aria-hidden="true"
@@ -33,12 +33,12 @@ import { Link } from 'react-router-dom';
                         className="fa-primary"></path>
                     </g>
                   </svg>
-                </a>
+                </p>
               </li>
         
               <li className="nav-item">
               
-                <a href="#" className="nav-link">
+                <p className="nav-link">
                   <svg
                     aria-hidden="true"
                     focusable="false"
@@ -57,13 +57,13 @@ import { Link } from 'react-router-dom';
                     </g>
                   </svg>
                   <Link className="link-text" to="/path2">Mascotas</Link>
-                </a>
+                </p>
               </li>
         
 
               <li className="nav-item">
              
-                <a href="#" className="nav-link">
+                <p href="#" className="nav-link">
                 <svg aria-hidden="true" 
                 focusable="false" 
                 data-prefix="fas" 
@@ -82,12 +82,12 @@ import { Link } from 'react-router-dom';
                     </g>
                   </svg>
                   <Link className="link-text" to="/path1">Perros</Link>
-                </a>
+                </p>
               </li>
 
 
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <p href="#" className="nav-link">
                 <svg aria-hidden="true" 
                 focusable="false"
                 data-prefix="fas" 
@@ -102,11 +102,11 @@ import { Link } from 'react-router-dom';
                     </g>
                   </svg>
                   <Link className="link-text" to="/path3">Clientes</Link>
-                </a>
+                </p>
               </li>
 
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <p href="#" className="nav-link">
                 <svg aria-hidden="true" 
                 focusable="false" 
                 data-prefix="fas" 
@@ -123,11 +123,11 @@ import { Link } from 'react-router-dom';
                     </g>
                   </svg>
                   <span className="link-text">Productos y Servicios</span>
-                </a>
+                </p>
               </li>
 
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <p href="#" className="nav-link">
                 <svg aria-hidden="true" 
                 focusable="false" 
                 data-prefix="fas" 
@@ -145,7 +145,7 @@ import { Link } from 'react-router-dom';
                     </g>
                   </svg>
                   <span className="link-text">Ventas</span>
-                </a>
+                </p>
               </li>
         
               

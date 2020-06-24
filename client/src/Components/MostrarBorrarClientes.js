@@ -23,7 +23,6 @@ const MostrarBorrar = () => {
     try {
       const response = await fetch("/clientes");
       const jsonData = await response.json();
-
       setClientes(jsonData);
     } catch (err) {
       console.error(err.message);
@@ -33,6 +32,21 @@ const MostrarBorrar = () => {
   useEffect(() => {
     getClientes();
   }, []);
+/*
+  useEffect(() => {
+    const abrController = new AbortController();
+    const signal = abrController.signal;
+    try {
+       fetch(getClientes(),{signal:signal})
+    } catch (err) {
+      console.error(err.message);
+    }
+    return function cleanUp(){
+      abrController.abort();
+    }
+    
+  }, []);*/
+
 
   return (
     <Fragment>
@@ -46,6 +60,7 @@ const MostrarBorrar = () => {
           </tr>
         </thead>
         <tbody>
+          
           {clientes.map(clientes => (
             <tr key={clientes.idcliente}>
               <td>{clientes.nombrecliente}</td>
@@ -66,7 +81,9 @@ const MostrarBorrar = () => {
         </tbody>
       </table>
     </Fragment>
+    
   );
+  
 };
 
 export default MostrarBorrar;
