@@ -14,6 +14,7 @@ const MostrarBorrar = () => {
       });
 
       setClientes(clientes.filter(clientes => clientes.idcliente !== id));
+      window.location = "/path3";
     } catch (err) {
       console.error(err.message);
     }

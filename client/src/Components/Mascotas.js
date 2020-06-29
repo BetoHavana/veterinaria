@@ -38,7 +38,23 @@ const Mascotas = () => {
   return (
     <Fragment>
       <h1 className="text-center mt-5">Registro de Mascotas</h1>
-      <form onSubmit={onSubmitForm}>
+      <button
+        type = "button"
+        className = "btn btn-success"
+        data-toggle = "modal"
+        data-target = "#modal_agregar"> 
+        Registrar Mascota
+        </button>
+        <div className="modal" id="modal_agregar" >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h4 className="modal-title">Agregar Mascota</h4>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+            <form onSubmit={onSubmitForm}>
           <div className="form-group">
             <label htmlFor="exampleFormControlInput1">Nombre </label>
             <input
@@ -141,6 +157,11 @@ const Mascotas = () => {
           </div>
           <button className="btn btn-success"> Insertar</button>
         </form>
+              </div>
+            </div>
+          </div>
+        </div>
+     
       <h1 className="text-center mt-5">Mascotas Registrados</h1>
       <MostrarBorrar/>
     </Fragment>

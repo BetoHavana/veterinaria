@@ -6,7 +6,7 @@ const EditarMascota = ({ clientes }) => {
   const [celular, setCel] = useState(clientes.celular);
   const [correo, setCorreo] = useState(clientes.correo);
   //edit description function
-  const updateName = async (e) => {
+  const updateCliente = async (e) => {
     e.preventDefault();
     try {
       const nombrec = { nombre };
@@ -14,6 +14,7 @@ const EditarMascota = ({ clientes }) => {
       const direccionc = { direccion };
       const telefonoc = { telefono };
       const celularc = { celular };
+      console.log('id:'+ clientes.idcliente);
       const response = await fetch(`/clientes/${clientes.idcliente}`,
         {
           method: "PUT",
@@ -22,6 +23,7 @@ const EditarMascota = ({ clientes }) => {
         }
       );
       window.location = "/path3";
+      console.log('editado');
     } catch (err) {
       console.error(err.message);
     }
@@ -32,7 +34,8 @@ const EditarMascota = ({ clientes }) => {
         type = "button"
         className = "btn btn-warning"
         data-toggle = "modal"
-        data-target = {`#id${clientes.idcliente}`}> Editar </button>
+        data-target = {`#id${clientes.idcliente}`}> Editar</button>
+
       <div className="modal" id={`id${clientes.idcliente}`} onClick={() => setNombre(clientes.nombrecliente)}>
         <div className="modal-dialog">
           <div className="modal-content">
@@ -47,6 +50,7 @@ const EditarMascota = ({ clientes }) => {
               </button>
             </div>
             <div className="modal-body">
+            <label htmlFor="exampleFormControlInput1">Nombre Cliente </label>
               <input
                 type="text"
                 className="form-control"
@@ -54,6 +58,7 @@ const EditarMascota = ({ clientes }) => {
                 onChange={e => setNombre(e.target.value)}/>
             </div>
             <div className="modal-body">
+            <label htmlFor="exampleFormControlInput1">Direccion </label>
               <input
                 type="text"
                 className="form-control"
@@ -61,6 +66,7 @@ const EditarMascota = ({ clientes }) => {
                 onChange={e => setDir(e.target.value)}/>
             </div>
             <div className="modal-body">
+            <label htmlFor="exampleFormControlInput1">Telefono </label>
               <input
                 type="text"
                 className="form-control"
@@ -68,6 +74,7 @@ const EditarMascota = ({ clientes }) => {
                 onChange={e => setTel(e.target.value)}/>
             </div>
             <div className="modal-body">
+            <label htmlFor="exampleFormControlInput1">Celular </label>
               <input
                 type="text"
                 className="form-control"
@@ -75,6 +82,7 @@ const EditarMascota = ({ clientes }) => {
                 onChange={e => setCel(e.target.value)}/>
             </div>
             <div className="modal-body">
+            <label htmlFor="exampleFormControlInput1">Correo </label>
               <input
                 type="text"
                 className="form-control"
@@ -86,7 +94,7 @@ const EditarMascota = ({ clientes }) => {
                 type="button"
                 className="btn btn-warning"
                 data-dismiss="modal"
-                onClick={e => updateName(e)}>
+                onClick={e => updateCliente(e)}>
                 Editar
               </button>
               <button
