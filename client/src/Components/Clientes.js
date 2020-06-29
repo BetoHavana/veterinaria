@@ -28,6 +28,7 @@ const Clientes = () => {
     };
     return (
       <Fragment>
+        {/*
         <h1 className="text-center mt-5">Registro de Clientes</h1>
         <form onSubmit={onSubmitForm}>
             <div className="form-group">
@@ -36,7 +37,7 @@ const Clientes = () => {
                 type="text"
                 className="form-control"
                 id="exampleFormControlInput1"
-                placeholder="Michi"
+                placeholder="Nombre cliente"
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}/>
             </div>
@@ -46,13 +47,116 @@ const Clientes = () => {
                 type="text"
                 className="form-control"
                 id="exampleFormControlInput1"
-                placeholder="1"
+                placeholder="Direcccion"
                 value={direccion}
                 onChange={(e) => setDir(e.target.value)}/>
             </div>
-            <button className="btn btn-success"> Registrar</button>
-          </form>
+            <div className="form-group">
+              <label htmlFor="exampleFormControlInput1">Telefono</label>
+              <input
+                type="text"
+                className="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Numero de telefono"
+                value={telefono}
+                onChange={(e) => setTel(e.target.value)}/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="exampleFormControlInput1">Celular</label>
+              <input
+                type="text"
+                className="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Numero de celular"
+                value={celular}
+                onChange={(e) => setCel(e.target.value)}/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="exampleFormControlInput1">Correo</label>
+              <input
+                type="text"
+                className="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Correo"
+                value={correo}
+                onChange={(e) => setCorreo(e.target.value)}/>
+            </div>
+            </form>
+        */}
         <h1 className="text-center mt-5">Clientes Registrados</h1>
+        <button
+        type = "button"
+        className = "btn btn-success"
+        data-toggle = "modal"
+        data-target = "#modal_agregar"> Registrar </button>
+        <div className="modal" id="modal_agregar" >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h4 className="modal-title">Agregar Cliente</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <form onSubmit={onSubmitForm}>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Nombre </label>
+                    <input
+                      required
+                      type="text"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Nombre cliente"
+                      value={nombre}
+                      onChange={(e) => setNombre(e.target.value)}/>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Direccion</label>
+                    <input
+                      required
+                      type="text"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Direcccion"
+                      value={direccion}
+                      onChange={(e) => setDir(e.target.value)}/>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Telefono</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Numero de telefono"
+                      value={telefono}
+                      onChange={(e) => setTel(e.target.value)}/>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Celular</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Numero de celular"
+                      value={celular}
+                      onChange={(e) => setCel(e.target.value)}/>
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="exampleFormControlInput1">Correo</label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Correo"
+                      value={correo}
+                      onChange={(e) => setCorreo(e.target.value)}/>
+                  </div>
+                  <button className="btn btn-success">Registrar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
         <MostrarBorrarClientes/>
       </Fragment>
     );

@@ -57,6 +57,27 @@ const EditarMascota = ({ clientes }) => {
               <input
                 type="text"
                 className="form-control"
+                value={direccion}
+                onChange={e => setDir(e.target.value)}/>
+            </div>
+            <div className="modal-body">
+              <input
+                type="text"
+                className="form-control"
+                value={telefono}
+                onChange={e => setTel(e.target.value)}/>
+            </div>
+            <div className="modal-body">
+              <input
+                type="text"
+                className="form-control"
+                value={celular}
+                onChange={e => setCel(e.target.value)}/>
+            </div>
+            <div className="modal-body">
+              <input
+                type="text"
+                className="form-control"
                 value={correo}
                 onChange={e => setCorreo(e.target.value)}/>
             </div>
